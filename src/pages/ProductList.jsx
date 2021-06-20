@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Icon, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../services/productService'
 
 export default function ProductList() {
@@ -9,8 +9,7 @@ export default function ProductList() {
     useEffect(() => {
         let producService = new ProductService()
         producService.getProducts().then(result => setProducts(result.data.data))
-    }
-    )
+    }, [])
 
     return (
         <div>
