@@ -7,12 +7,19 @@ export default function ProductDetail() {
 
     let { id } = useParams()
 
+    // let { name } = useParams()
+
     const [product, setProduct] = useState({})
 
     useEffect(() => {
         let producService = new ProductService()
         producService.getProductById(id).then(result => setProduct(result.data.data))
     }, [])
+
+    // useEffect(() => {
+    //     let producService = new ProductService()
+    //     producService. getByProductName(name).then(result => setProduct(result.data.data))
+    // }, [])
 
     return (
         <div>
@@ -27,7 +34,8 @@ export default function ProductDetail() {
                         <Card.Header>{product.id}</Card.Header>
                         <Card.Meta>{product.productName}</Card.Meta>
                         <Card.Description>
-                            <strong>{product.category.categoryName}</strong>
+                            {/* <strong>{product.category.categoryName}</strong> */}
+                            <strong>{product.quantityPerUnit}</strong>
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
