@@ -4,11 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import { configureStore } from './store/reducers/configureStore';
+import "react-toastify/dist/ReactToastify.min.css"
+
+const store = configureStore()
 
 ReactDOM.render(
-  // <React.StrictMode>
-  <BrowserRouter> <App /> </BrowserRouter>
-  // </React.StrictMode>
+  <Provider store={store}>
+    {/* <React.StrictMode> */}
+    <BrowserRouter> <App /> </BrowserRouter>
+    {/* </React.StrictMode> */}
+  </Provider>
+
   ,
   document.getElementById('root')
 );
@@ -23,3 +31,6 @@ reportWebVitals();
 // Burada   <App />, document.getElementById('root') Bu ifadeyle app componentini root'a yerleştir anlamına geliyor.
 // index.js çalıştıktan sonra ReactDOM.render çalıştırılır.
 // Ve root'a App monte edilir. Burada App'nin altında çalışan henüz bir component yoktur.
+
+// <Provider store={store}> component'ine  store parametresini geçip uygulamamazı Provider component'iyle 
+// sarmallayarak uygulamamızın tamamında react redux altyapısını uygulayarak store'u kulanmayı sağlıyor.
